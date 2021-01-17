@@ -191,13 +191,17 @@ thisProduct.cartButton.addEventListener('click', function(event){
 
     if(optionSelected) {
       if (img) {
+          if (optionId.includes('default')) {
           img.classList.add(classNames.menuProduct.imageVisible);
+         }
+       }
+
+      else if (img) {
+        if (!optionId.includes('default')) {
+            img.classList.remove(classNames.menuProduct.imageVisible);
         }
-    }
-    else {
-      if (!img) {
-          img.classList.remove(classNames.menuProduct.imageVisible);
-          }
+      }
+
     }
 
   }
