@@ -99,6 +99,7 @@ renderInMenu(){
   thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
   thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
   thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+  thisProduct.imageWrapper = thisProduct.images.querySelector(select.menuProduct.imageWrapper);
   }
 
   initAccordion(){
@@ -173,18 +174,34 @@ thisProduct.cartButton.addEventListener('click', function(event){
 
       // check if optionId of paramID ist chosen in formData
 
-        if (formData[paramId] && formData[paramId].includes(optionId)) {
-          if (!optionId.includes('default')) {
-            price += option.price;
-          }
-        }
-        else {
-          if (optionId.includes('default')) {
-            price -= option.price;
-          }
-        }
-       }
+    const optionSelected = formData[paramId] && formData[paramId].includes(optionId)
+    if (optionSelected) {
+      if (!optionId.includes('default')) {
+        price += option.price;
+              }
+    }
+    else {
+      if (optionId.includes('default')) {
+         price -= option.price;
       }
+    }
+
+    // add class 'active' to image when element is chosen
+    const img = thisProduct.imageWrapper.querySelector('.paramId-optionId');
+
+    if(optionSelected) {
+      if (img) {
+          img.classList.add(classNames.menuProduct.imageVisible);
+        }
+    }
+    else {
+      if (!img) {
+          img.classList.remove(classNames.menuProduct.imageVisible);
+          }
+    }
+
+  }
+}
 
   // update calculated price in the HTML
   thisProduct.priceElem.innerHTML = price;
