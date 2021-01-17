@@ -93,7 +93,7 @@ initAccordion(){
 
   /* find the clickable trigger (the element that should react to clicking) */
 
-  const clickableTrigger = document.querySelector(select.menuProduct.clickable);
+  const clickableTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
 
   /* START: add event listener to clickable trigger on event click */
 
@@ -104,10 +104,10 @@ initAccordion(){
 
 
     /* find active product (product that has active class) */
-    let activeProduct = document.querySelector(classNames.menuProduct.wrapperActive);
+    let activeProduct = document.querySelector('.active');
 
     /* if there is active product and it's not thisProduct.element, remove class active from it */
-    if (activeProduct !== thisProduct.element) {
+    if (activeProduct !== null && activeProduct !== thisProduct.element) {
         activeProduct.classList.remove(classNames.menuProduct.wrapperActive);
     }
 
