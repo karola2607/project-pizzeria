@@ -100,7 +100,10 @@ renderInMenu(){
   thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
   thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
   thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
+  console.log(thisProduct.imageWrapper);
   }
+
+
 
   initAccordion(){
   const thisProduct = this;
@@ -175,6 +178,7 @@ thisProduct.cartButton.addEventListener('click', function(event){
       // check if optionId of paramID ist chosen in formData
 
     const optionSelected = formData[paramId] && formData[paramId].includes(optionId)
+    console.log(optionSelected);
     if (optionSelected) {
       if (!optionId.includes('default')) {
         price += option.price;
@@ -188,16 +192,14 @@ thisProduct.cartButton.addEventListener('click', function(event){
 
     // add class 'active' to image when element is chosen
     const img = thisProduct.imageWrapper.querySelector('.paramId-optionId');
+      console.log(img);
 
-    if(optionSelected) {
-      if (img) {
-          if (optionId.includes('default')) {
+    if(img) {
+      if (optionSelected) {
           img.classList.add(classNames.menuProduct.imageVisible);
-         }
-       }
+          }
 
-      else if (img) {
-        if (!optionId.includes('default')) {
+      else if (!optionSelected) {
             img.classList.remove(classNames.menuProduct.imageVisible);
         }
       }
@@ -205,7 +207,7 @@ thisProduct.cartButton.addEventListener('click', function(event){
     }
 
   }
-}
+
 
   // update calculated price in the HTML
   thisProduct.priceElem.innerHTML = price;
