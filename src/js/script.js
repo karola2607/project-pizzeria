@@ -191,7 +191,7 @@ thisProduct.cartButton.addEventListener('click', function(event){
     }
 
     // add class 'active' to image when element is chosen
-    const img = thisProduct.imageWrapper.querySelector('.paramId-optionId');
+    const img = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
       console.log(img);
 
     if(img) {
