@@ -100,9 +100,14 @@ renderInMenu(){
   thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
   thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
   thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
-  console.log(thisProduct.imageWrapper);
+  thisProduct.amountWidgetElem = thisProduct.element.querySelector(select.menuProduct.amountWidget);
   }
 
+  initAmountWidget(){
+    const thisProduct = this;
+
+    thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
+  }
 
 
   initAccordion(){
