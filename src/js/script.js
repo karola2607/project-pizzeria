@@ -258,18 +258,18 @@ class AmountWidget{
 
 
   initActions() {
-    const thisProduct = this;
+    const thisWidget = this;
 
     thisWidget.input.addEventListener('change', function(event){
       thisWidget.input.value.setValue();
   });
     thisWidget.linkDecrease.addEventListener('click', function(event){
       event.preventDefault();
-      setValue(thisWidget.value-1)
+      thisWidget.input.value.setValue++();
     })
     thisWidget.linkIncrease.addEventListener('click', function(event){
       event.preventDefault();
-      setValue(thisWidget.value+1)
+      thisWidget.input.value.setValue--();
     })
 
   };
