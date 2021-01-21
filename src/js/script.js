@@ -247,6 +247,9 @@ class AmountWidget{
     const newValue = parseInt(value);
 
     /*TODO: Add validation */
+    if(thisWidget.value !== newValue) {
+      thisWidget.value = newValue;
+    }
 
     thisWidget.value = newValue;
     thisWidget.input.value = thisWidget.value;
