@@ -255,22 +255,25 @@ class AmountWidget{
 
 
     };
+  }
 
 
-  initActions() {
+  initActions(){
     const thisWidget = this;
 
     thisWidget.input.addEventListener('change', function(event){
       thisWidget.input.value.setValue();
-  });
+    });
+
     thisWidget.linkDecrease.addEventListener('click', function(event){
       event.preventDefault();
-      thisWidget.input.value.setValue++();
-    })
+      setValue(--thisWidget.value);
+    });
+
     thisWidget.linkIncrease.addEventListener('click', function(event){
       event.preventDefault();
-      thisWidget.input.value.setValue--();
-    })
+      setValue(++thisWidget.value);
+    });
 
   };
 }
