@@ -216,6 +216,16 @@ thisProduct.cartButton.addEventListener('click', function(event){
 
 
 
+class AmountWidget{
+  constructor(element){
+    const thisWidget = this;
+
+    console.log('AmountWidget:', thisWidget);
+    console.log('constructor arguments:', element);
+  }
+}
+
+
   const app = {
     initData: function(){
       const thisApp = this;
