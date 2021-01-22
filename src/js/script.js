@@ -249,10 +249,11 @@ class AmountWidget{
     thisWidget.input.value = thisWidget.value;
 
     /*TODO: Add validation */
-    if(thisWidget.value !== newValue && !isNan(newValue)) {
+    if(thisWidget.value !== newValue
+     && !isNan(newValue)
+     && thisWidget.value >= settings.amountWidget.defaultMin
+     && thisWidget.value <= settings.amountWidget.defaultMax) {
       thisWidget.value = newValue;
-
-
     };
   }
 
