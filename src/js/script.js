@@ -45,7 +45,7 @@
       defaultValue: 1,
       defaultMin: 1,
       defaultMax: 9,
-    }
+    },
   };
 
   const templates = {
@@ -228,9 +228,9 @@ class AmountWidget{
     thisWidget.getElements(element);
     thisWidget.setValue(thisWidget.input.value);
     thisWidget.initActions();
-    console.log('AmountWidget:', thisWidget);
-    console.log('constructor arguments:', element);
-  };
+    //console.log('AmountWidget:', thisWidget);
+    //console.log('constructor arguments:', element);
+  }
 
   getElements(element){
   const thisWidget = this;
@@ -239,14 +239,12 @@ class AmountWidget{
   thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
   thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
   thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
- };
+ }
 
   setValue(value){
     const thisWidget = this;
-
     const newValue = parseInt(value);
-    thisWidget.value = newValue;
-    thisWidget.input.value = thisWidget.value;
+
 
     /*TODO: Add validation */
     if(thisWidget.value !== newValue
@@ -254,7 +252,8 @@ class AmountWidget{
      && thisWidget.value >= settings.amountWidget.defaultMin
      && thisWidget.value <= settings.amountWidget.defaultMax) {
       thisWidget.value = newValue;
-    };
+    }
+    thisWidget.input.value = thisWidget.value;
   }
 
 
