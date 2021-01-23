@@ -273,6 +273,14 @@
       });
 
     }
+
+    announce(){
+      const thisWidget = this;
+
+      const event = new Event('updated');
+      thisWidget.element.dispatchEvent(event);
+    }
+
   }
 
 
