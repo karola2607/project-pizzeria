@@ -264,11 +264,40 @@
 
     prepareCartProduct(){
       const thisProduct = this;
-      const productSummary = {id: thisProduct.id, name: thisProduct.data.name , amount: thisProduct.amountWidget.value, priceSingle: thisProduct.priceSingle, price: thisProduct.priceElem.innerHTML };
+      const productSummary = {id: thisProduct.id, name: thisProduct.data.name , amount: thisProduct.amountWidget.value, priceSingle: thisProduct.priceSingle, price: thisProduct.priceElem.innerHTML, params: thisProduct.prepareCartProductParams()};
       return productSummary;
     }
 
-  }
+    prepareCartProductParams(){
+      const thisProduct = this;
+
+      const formData = utils.serializeFormToObject(thisProduct.form);
+      const params = {};
+
+
+      for(let paramId in thisProduct.data.params) {
+        const param = thisProduct.data.params[paramId];
+
+      params[paramId] = {label: param.label, options: {}}
+
+        for(let optionId in param.options) {
+          // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
+          const option = param.options[optionId];
+
+          // check if optionId of paramID ist chosen in formData
+
+          const optionSelected = formData[paramId] && formData[paramId].includes(optionId);
+
+          if (optionSelected) {
+            params[paramId].options = {option: option.label};
+            }
+          }
+        }
+       return params;
+      }
+    }
+
+
 
 
 
