@@ -249,10 +249,9 @@
         }
 
       }
-
+      thisProduct.priceSingle = price;
       price *= settings.amountWidget.defaultValue;
       // update calculated price in the HTML
-      thisProduct.priceSingle = price;
       thisProduct.priceElem.innerHTML = price;
     }
 
@@ -283,13 +282,14 @@
         for(let optionId in param.options) {
           // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
           const option = param.options[optionId];
+          console.log(optionId);
 
           // check if optionId of paramID ist chosen in formData
 
           const optionSelected = formData[paramId] && formData[paramId].includes(optionId);
 
           if (optionSelected) {
-            params[paramId].options = {option: option.label};
+            params[paramId].options = {optionId: option.label};
             }
           }
         }
