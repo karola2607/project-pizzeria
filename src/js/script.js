@@ -92,7 +92,7 @@
 
       thisProduct.id = id;
       thisProduct.data = data;
-
+      console.log(thisProduct.data)
       thisProduct.renderInMenu();
       thisProduct.getElements();
       thisProduct.initAccordion();
@@ -282,7 +282,6 @@
         for(let optionId in param.options) {
           // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
           const option = param.options[optionId];
-          console.log(optionId);
 
           // check if optionId of paramID ist chosen in formData
 
@@ -385,6 +384,8 @@
       thisCart.dom.wrapper = element;
 
       thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
+
+      thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.containerOf.cart);
     }
 
     initActions(){
@@ -396,12 +397,25 @@
     }
 
     add(menuProduct){
-      // const thisCart = this;
+      const thisCart = this;
+      /* generate HTML based on template */
 
-      console.log('adding product', menuProduct);
+      const generatedHTML = templates.cartProduct(productSummary);
+
+
+      /* create element using utils.createElementFromHTML */
+
+      thisCart.element = utils.createDOMFromHTML(generatedHTML);
+      const generatedDOM = thisCart.element;
+
+      /* add element to menu */
+
+      thisCart.dom.productList.appendChild(generatedDOM);
+       console.log('adding product', menuProduct);
+     }
     }
 
-  }
+
 
 
 
