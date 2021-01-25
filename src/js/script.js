@@ -110,7 +110,6 @@
 
       const generatedHTML = templates.menuProduct(thisProduct.data);
 
-
       /* create element using utils.createElementFromHTML */
 
       thisProduct.element = utils.createDOMFromHTML(generatedHTML);
@@ -118,7 +117,6 @@
       /* find menu container */
 
       const menuContainer = document.querySelector(select.containerOf.menu);
-
       /* add element to menu */
 
       menuContainer.appendChild(thisProduct.element);
@@ -288,7 +286,7 @@
           const optionSelected = formData[paramId] && formData[paramId].includes(optionId);
 
           if (optionSelected) {
-            params[paramId].options = {optionId: option.label};
+            params[paramId].options = {[param.label]: option.label};
             }
           }
         }
@@ -385,7 +383,7 @@
 
       thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
 
-      thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.containerOf.cart);
+      thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.containerOf.menuProduct);
     }
 
     initActions(){
@@ -400,14 +398,14 @@
       const thisCart = this;
       /* generate HTML based on template */
 
-      const generatedHTML = templates.cartProduct(productSummary);
-
+      const generatedHTML = templates.cartProduct(select.cartProduct);
+      console.log(generatedHTML);
 
       /* create element using utils.createElementFromHTML */
 
       thisCart.element = utils.createDOMFromHTML(generatedHTML);
       const generatedDOM = thisCart.element;
-
+      console.log(generatedDOM)
       /* add element to menu */
 
       thisCart.dom.productList.appendChild(generatedDOM);
