@@ -69,8 +69,8 @@
   const settings = {
     amountWidget: {
       defaultValue: 1,
-      defaultMin: 1,
-      defaultMax: 9,
+      defaultMin: 0,
+      defaultMax: 10,
     }, // CODE CHANGED
     // CODE ADDED START
     cart: {
@@ -248,7 +248,7 @@
 
       }
       thisProduct.priceSingle = price;
-      price *= settings.amountWidget.defaultValue;
+      price *= thisProduct.amountWidget.value;
       // update calculated price in the HTML
       thisProduct.priceElem.innerHTML = price;
     }
@@ -326,11 +326,11 @@
 
 
       /*TODO: Add validation */
-      if(settings.amountWidget.defaultValue !== newValue && !isNaN(newValue) && newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMax) {
-        settings.amountWidget.defaultValue = newValue;
+      if(thisWidget.value !== newValue && !isNaN(newValue) && newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMax) {
+        thisWidget.value = newValue;
         thisWidget.announce();
       }
-      thisWidget.input.value = settings.amountWidget.defaultValue;
+      thisWidget.input.value = thisWidget.value;
     }
 
 
@@ -343,14 +343,14 @@
 
       thisWidget.linkDecrease.addEventListener('click', function(event){
         event.preventDefault();
-        thisWidget.setValue(settings.amountWidget.defaultValue - 1);
+        thisWidget.setValue(thisWidget.value - 1);
       });
 
       thisWidget.linkIncrease.addEventListener('click', function(event){
         event.preventDefault();
-        thisWidget.setValue(settings.amountWidget.defaultValue + 1);
+        thisWidget.setValue(thisWidget.value + 1);
       });
-
+    console.log(thisWidget.input)
     }
 
 
@@ -401,18 +401,17 @@
       /* generate HTML based on template */
 
       const generatedHTML = templates.cartProduct(menuProduct);
-      console.log(generatedHTML);
 
       /* create element using utils.createElementFromHTML */
 
       thisCart.element = utils.createDOMFromHTML(generatedHTML);
       const generatedDOM = thisCart.element;
-      console.log(generatedDOM)
+
       /* add element to menu */
 
       thisCart.dom.productList.appendChild(generatedDOM);
        console.log('adding product', menuProduct);
-       console.log(thisCart.dom.productList)
+
      }
     }
 
