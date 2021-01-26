@@ -313,6 +313,7 @@
     getElements(element){
       const thisWidget = this;
 
+      thisWidget.value = settings.amountWidget.defaultValue;
       thisWidget.element = element;
       thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
       thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
@@ -383,7 +384,8 @@
 
       thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
 
-      thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.containerOf.menuProduct);
+      thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.cart.productList);
+      console.log(thisCart.dom.productList)
     }
 
     initActions(){
@@ -398,7 +400,7 @@
       const thisCart = this;
       /* generate HTML based on template */
 
-      const generatedHTML = templates.cartProduct(select.cartProduct);
+      const generatedHTML = templates.cartProduct(menuProduct);
       console.log(generatedHTML);
 
       /* create element using utils.createElementFromHTML */
@@ -410,6 +412,7 @@
 
       thisCart.dom.productList.appendChild(generatedDOM);
        console.log('adding product', menuProduct);
+       console.log(thisCart.dom.productList)
      }
     }
 
