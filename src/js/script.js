@@ -432,6 +432,7 @@
       thisCartProduct.price = menuProduct.price;
 
       thisCartProduct.getElements(element);
+      thisCartProduct.initCartProduct();
       console.log('new CartProduct:', thisCartProduct);
     }
 
@@ -446,6 +447,24 @@
     thisCartProduct.dom.edit = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.edit);
     thisCartProduct.dom.remove = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.remove);
    }
+
+   initCartProduct(){
+    const thisCartProduct = this;
+
+    thisCartProduct.dom.amountWidget.addEventListener('updated', function() {
+        thisCartProduct.amount =  thisCartProduct.dom.amountWidget.value;
+        console.log(thisCartProduct.amount);
+
+        thisCartProduct.price = thisCartProduct.amount * thisCartProduct.priceSingle;
+        console.log(thisCartProduct.price);
+
+        thisCartProduct.dom.price = thisCartProduct.price;
+        console.log( thisCartProduct.dom.price)
+      });
+
+      thisCartProduct.dom.amountWidget = new AmountWidget(thisCartProduct.dom.amountWidget);
+      console.log(thisCartProduct.dom.amountWidget)
+    }
 
   }
 
