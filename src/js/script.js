@@ -458,8 +458,8 @@
         thisCartProduct.price = thisCartProduct.amount * thisCartProduct.priceSingle;
         console.log(thisCartProduct.price);
 
-        thisCartProduct.dom.price = thisCartProduct.price;
-        console.log( thisCartProduct.dom.price)
+        thisCartProduct.dom.price.innerHTML = thisCartProduct.price;
+        console.log(thisCartProduct.dom.price.innerHTML)
       });
 
       thisCartProduct.dom.amountWidget = new AmountWidget(thisCartProduct.dom.amountWidget);
