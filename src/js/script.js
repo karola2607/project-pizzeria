@@ -261,7 +261,19 @@
 
     prepareCartProduct(){
       const thisProduct = this;
-      const productSummary = {id: thisProduct.id, name: thisProduct.data.name , amount: thisProduct.amountWidget.value, priceSingle: thisProduct.priceSingle, price: thisProduct.priceElem.innerHTML, params: thisProduct.prepareCartProductParams()};
+
+      thisProduct.name = thisProduct.data.name;
+      thisProduct.amount = thisProduct.amountWidget.value;
+
+      const productSummary = {
+        id: thisProduct.id,
+        name: thisProduct.name ,
+        amount: thisProduct.amount,
+        priceSingle: thisProduct.priceSingle,
+        price: thisProduct.priceElem.innerHTML,
+        params: thisProduct.prepareCartProductParams()
+      };
+
       return productSummary;
     }
 
@@ -405,8 +417,8 @@
 
       /* create element using utils.createElementFromHTML */
 
-      thisCart.element = utils.createDOMFromHTML(generatedHTML);
-      const generatedDOM = thisCart.element;
+      const generatedDOM = utils.createDOMFromHTML(generatedHTML);
+
 
       /* add element to menu */
 
@@ -423,6 +435,7 @@
   class CartProduct {
     constructor(menuProduct, element){
       const thisCartProduct = this;
+      console.log('!!', menuProduct)
 
       thisCartProduct.id = menuProduct.id;
       thisCartProduct.name = menuProduct.name;
@@ -451,8 +464,11 @@
    initCartProduct(){
     const thisCartProduct = this;
 
+    thisCartProduct.amountWidget = new AmountWidget(thisCartProduct.dom.amountWidget);
+    console.log('!!!!', thisCartProduct.amountWidget)
+
     thisCartProduct.dom.amountWidget.addEventListener('updated', function() {
-        thisCartProduct.amount =  thisCartProduct.dom.amountWidget.value;
+        thisCartProduct.amount =  thisCartProduct.amountWidget.value;
         console.log(thisCartProduct.amount);
 
         thisCartProduct.price = thisCartProduct.amount * thisCartProduct.priceSingle;
@@ -462,8 +478,7 @@
         console.log(thisCartProduct.dom.price.innerHTML)
       });
 
-      thisCartProduct.dom.amountWidget = new AmountWidget(thisCartProduct.dom.amountWidget);
-      console.log(thisCartProduct.dom.amountWidget)
+
     }
 
   }
