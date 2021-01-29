@@ -37,7 +37,7 @@
       productList: '.cart__order-summary',
       toggleTrigger: '.cart__summary',
       totalNumber: '.cart__total-number',
-      totalPrice: ['.cart__total-price strong', '.cart__order-total .cart__order-price-sum strong'],
+      totalPrice: '.cart__order-total .cart__order-price-sum strong,.cart__total-price strong',
       subTotalPrice: '.cart__order-subtotal .cart__order-price-sum strong',
       deliveryFee: '.cart__order-delivery .cart__order-price-sum strong',
       form: '.cart__order',
@@ -395,8 +395,8 @@
 
       thisCart.dom.subTotalPrice = thisCart.dom.wrapper.querySelector(select.cart.subTotalPrice);
 
-      thisCart.dom.totalPrice = thisCart.dom.wrapper.querySelector(select.cart.totalPrice[0], select.cart.totalPrice[1]);
-      console.log(thisCart.dom.totalPrice);
+      thisCart.dom.totalPrice = thisCart.dom.wrapper.querySelectorAll(select.cart.totalPrice);
+
       thisCart.dom.totalNumber = thisCart.dom.wrapper.querySelector(select.cart.totalNumber);
       console.log(thisCart.dom.totalNumber);
     }
@@ -445,14 +445,21 @@
         subTotalPrice =+ (totalNumber * thisCart.CartProduct.priceSingle);
         thisCart.dom.subTotalPrice.innerHTML = subTotalPrice;
 
-      if (thisCart.totalNumber = 0) {
-      thisCart.totalPrice = subTotalPrice;
 
-       } else {
+
+      if (totalNumber == 0) {
+       thisCart.totalPrice = 0;
+
+       } else if (totalNumber !== 0)  {
         thisCart.totalPrice = subTotalPrice + deliveryFee;
+
        }
 
-      thisCart.dom.totalPrice.innerHTML = thisCart.totalPrice;
+
+      for (let i = 0; i < thisCart.dom.totalPrice.length; i++) {
+      thisCart.dom.totalPrice[i].innerHTML = thisCart.totalPrice;
+       }
+
       thisCart.dom.deliveryFee.innerHTML = deliveryFee;
 
       }
