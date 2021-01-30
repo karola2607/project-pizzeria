@@ -415,7 +415,7 @@
         thisCart.update();
       })
 
-      thisCart.dom.productList.addEventListener('removed', function(){
+      thisCart.dom.productList.addEventListener('remove', function(){
         thisCart.remove(event.detail.cartProduct);
       })
 
@@ -427,11 +427,11 @@
       /* generate HTML based on template */
 
       const generatedHTML = templates.cartProduct(menuProduct);
-
+      //console.log(generatedHTML);
       /* create element using utils.createElementFromHTML */
 
       const generatedDOM = utils.createDOMFromHTML(generatedHTML);
-
+      //console.log(generatedDOM);
 
       /* add element to menu */
 
@@ -480,6 +480,19 @@
       console.log(deliveryFee);
     }
   }
+
+     remove(thisCartProduct){
+     const thisCart = this;
+
+     const indexOfCartProduct = thisCart.products.indexOf(thisCartProduct);
+     console.log(indexOfCartProduct);
+     const removedCartProduct = thisCart.products.splice(indexOfCartProduct, 1);
+     console.log(removedCartProduct);
+
+     const removedDOMCartProduct = thisCart.dom.productList.querySelector(removedCartProduct);
+     console.log(removedDOMCartProduct);
+     removedDOMCartProduct.remove();
+      }
 }
 
 
