@@ -362,11 +362,14 @@
     announce(){
       const thisWidget = this;
 
-      const event = new Event('updated');
+      const event = new CustomEvent('updated', {
+        bubbles: true
+      });
       thisWidget.element.dispatchEvent(event);
     }
 
   }
+
 
   class Cart{
     constructor(element){
@@ -407,6 +410,15 @@
       thisCart.dom.toggleTrigger.addEventListener('click', function() {
         thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
       });
+
+      thisCart.dom.productList.addEventListener('updated', function(){
+        thisCart.update();
+      })
+
+      thisCart.dom.productList.addEventListener('removed', function(){
+        thisCart.remove(event.detail.cartProduct);
+      })
+
     }
 
 
@@ -438,11 +450,12 @@
       let totalNumber = 0;
       let subTotalPrice = 0;
 
+
       for (thisCart.CartProduct of thisCart.products) {
-        totalNumber =+ thisCart.CartProduct.amount;
+        totalNumber += thisCart.CartProduct.amount;
         thisCart.dom.totalNumber.innerHTML = totalNumber;
 
-        subTotalPrice =+ (totalNumber * thisCart.CartProduct.priceSingle);
+        subTotalPrice += (totalNumber * thisCart.CartProduct.priceSingle);
         thisCart.dom.subTotalPrice.innerHTML = subTotalPrice;
 
 
@@ -455,15 +468,11 @@
 
        }
 
-
       for (let i = 0; i < thisCart.dom.totalPrice.length; i++) {
       thisCart.dom.totalPrice[i].innerHTML = thisCart.totalPrice;
        }
 
       thisCart.dom.deliveryFee.innerHTML = deliveryFee;
-
-      }
-
 
       console.log('totalPrice:', thisCart.totalPrice)
       console.log(totalNumber);
@@ -471,6 +480,7 @@
       console.log(deliveryFee);
     }
   }
+}
 
 
   class CartProduct {
@@ -486,6 +496,8 @@
 
       thisCartProduct.getElements(element);
       thisCartProduct.initCartProduct();
+      thisCartProduct.initActions();
+
       //console.log('new CartProduct:', thisCartProduct);
     }
 
@@ -513,8 +525,33 @@
 
         thisCartProduct.dom.price.innerHTML = thisCartProduct.price;
       });
+    }
+
+    remove(){
+      const thisCartProduct = this;
+
+      const event = new CustomEvent('remove', {
+        bubbles: true,
+        detail: {
+          cartProduct: thisCartProduct,
+        },
+      });
+
+      thisCartProduct.dom.wrapper.dispatchEvent(event);
+    }
 
 
+
+    initActions(){
+      const thisCartProduct = this;
+      thisCartProduct.dom.edit.addEventListener('click', function(event){
+       event.preventDefault();
+      });
+
+      thisCartProduct.dom.remove.addEventListener('click', function(event){
+        event.preventDefault();
+        thisCartProduct.remove();
+      });
     }
 
   }
