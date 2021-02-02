@@ -96,6 +96,7 @@
       const thisProduct = this;
 
       thisProduct.id = id;
+      console.log(thisProduct.id);
       thisProduct.data = data;
       thisProduct.renderInMenu();
       thisProduct.getElements();
@@ -257,11 +258,13 @@
       const thisProduct = this;
 
       app.cart.add(thisProduct.prepareCartProduct());
+      console.log(thisProduct);
     }
 
     prepareCartProduct(){
       const thisProduct = this;
 
+      thisProduct.id = thisProduct.id;
       thisProduct.name = thisProduct.data.name;
       thisProduct.amount = thisProduct.amountWidget.value;
 
@@ -500,11 +503,8 @@
 
       for (thisCart.CartProduct of thisCart.products) {
         totalNumber += thisCart.CartProduct.amount;
-        thisCart.dom.totalNumber.innerHTML = totalNumber;
-
         subTotalPrice += (thisCart.CartProduct.amount * thisCart.CartProduct.priceSingle);
-        thisCart.dom.subTotalPrice.innerHTML = subTotalPrice;
-
+       }
 
 
       if (totalNumber == 0) {
@@ -520,15 +520,13 @@
        }
 
       thisCart.dom.deliveryFee.innerHTML = deliveryFee;
+      thisCart.dom.totalNumber.innerHTML = totalNumber;
+      thisCart.dom.subTotalPrice.innerHTML = subTotalPrice;
+
 
       thisCart.subTotalPrice = subTotalPrice;
       thisCart.totalNumber = totalNumber;
       thisCart.deliveryFee = deliveryFee;
-      console.log('totalPrice:', thisCart.totalPrice)
-      console.log(totalNumber);
-      console.log(subTotalPrice);
-      console.log(deliveryFee);
-      }
     }
 
      remove(thisCartProduct){
