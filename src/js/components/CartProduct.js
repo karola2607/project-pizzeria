@@ -1,5 +1,5 @@
-import {select} from './settings.js';
-import AmountWidget from './components/AmountWidget.js';
+import {select} from '../settings.js';
+import AmountWidget from './AmountWidget.js';
 
 
 class CartProduct {
@@ -90,4 +90,4 @@ class CartProduct {
 
 }
 
-
+export default CartProduct;

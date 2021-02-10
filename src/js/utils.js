@@ -2,19 +2,19 @@
 
 export const utils = {}; // eslint-disable-line no-unused-vars
 
-export utils.createDOMFromHTML = function(htmlString) {
+utils.createDOMFromHTML = function(htmlString) {
   let div = document.createElement('div');
   div.innerHTML = htmlString.trim();
   return div.firstChild;
 };
 
-export utils.createPropIfUndefined = function(obj, key, value = []){
+utils.createPropIfUndefined = function(obj, key, value = []){
   if(!obj.hasOwnProperty(key)){
     obj[key] = value;
   }
 };
 
-export utils.serializeFormToObject = function(form){
+utils.serializeFormToObject = function(form){
   let output = {};
   if (typeof form == 'object' && form.nodeName == 'FORM') {
     for (let field of form.elements) {
@@ -36,7 +36,7 @@ export utils.serializeFormToObject = function(form){
   return output;
 };
 
-export utils.convertDataSourceToDbJson = function(){
+utils.convertDataSourceToDbJson = function(){
   const productJson = [];
   for(let key in dataSource.products){
     productJson.push(Object.assign({id: key}, dataSource.products[key]));
@@ -45,12 +45,14 @@ export utils.convertDataSourceToDbJson = function(){
   console.log(JSON.stringify({product: productJson, order: []}, null, '  '));
 };
 
-export Handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
+
+Handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
   return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
 });
 
-export Handlebars.registerHelper('joinValues', function(input, options) {
+Handlebars.registerHelper('joinValues', function(input, options) {
   return Object.values(input).join(options.fn(this));
 });
+
 
 
