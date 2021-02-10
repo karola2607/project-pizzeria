@@ -6,8 +6,6 @@ class Product{
   constructor(id, data){
     const thisProduct = this;
 
-    thisProduct.id = id;
-    console.log(thisProduct.id);
     thisProduct.data = data;
     thisProduct.renderInMenu();
     thisProduct.getElements();
