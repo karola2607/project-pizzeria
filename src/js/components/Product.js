@@ -6,6 +6,7 @@ class Product{
   constructor(id, data){
     const thisProduct = this;
 
+    thisProduct.id = id;
     thisProduct.data = data;
     thisProduct.renderInMenu();
     thisProduct.getElements();
@@ -32,7 +33,6 @@ class Product{
     /* add element to menu */
 
     menuContainer.appendChild(thisProduct.element);
-
   }
 
   getElements(){
@@ -68,7 +68,7 @@ class Product{
 
 
       /* find active product (product that has active class) */
-      let activeProduct = document.querySelector('.active');
+      let activeProduct = thisProduct.element.querySelector('.active');
 
       /* if there is active product and it's not thisProduct.element, remove class active from it */
       if (activeProduct !== null && activeProduct !== thisProduct.element) {
@@ -79,7 +79,6 @@ class Product{
       thisProduct.element.classList.toggle(classNames.menuProduct.wrapperActive);
 
     });
-
   }
 
   initOrderForm(){
@@ -171,7 +170,7 @@ class Product{
     const event = new CustomEvent('add-to-cart', {
       bubbles: true,
       detail: {
-        product: thisProduct,
+        product: thisProduct.prepareCartProduct(),
       },
     });
 

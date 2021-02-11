@@ -92,7 +92,7 @@ export const classNames = {
 };
 
 export const settings = {
-   hours: {
+  hours: {
     open: 12,
     close: 24,
   },
@@ -101,13 +101,13 @@ export const settings = {
     defaultMin: 0,
     defaultMax: 10,
   },
-   datePicker: {
+  datePicker: {
     maxDaysInFuture: 14,
   },
   cart: {
     defaultDeliveryFee: 20,
   },
-   booking: {
+  booking: {
     tableIdAttribute: 'data-table',
   },
   db: {
@@ -128,6 +128,6 @@ export const templates = {
   menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
   // CODE ADDED START
   cartProduct: Handlebars.compile(document.querySelector(select.templateOf.cartProduct).innerHTML),
-// CODE ADDED END
+  // CODE ADDED END
   bookingWidget: Handlebars.compile(document.querySelector(select.templateOf.bookingWidget).innerHTML),
 };

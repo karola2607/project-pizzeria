@@ -97,7 +97,6 @@ class Cart{
     /* create element using utils.createElementFromHTML */
 
     const generatedDOM = utils.createDOMFromHTML(generatedHTML);
-
     /* add element to menu */
 
     thisCart.dom.productList.appendChild(generatedDOM);
