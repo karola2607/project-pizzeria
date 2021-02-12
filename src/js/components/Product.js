@@ -2,6 +2,8 @@ import {select, templates, classNames} from '../settings.js';
 import AmountWidget from './AmountWidget.js';
 import {utils} from '../utils.js';
 
+/* global Handlebars, dataSource */
+
 class Product{
   constructor(id, data){
     const thisProduct = this;
@@ -23,7 +25,7 @@ class Product{
 
     const generatedHTML = templates.menuProduct(thisProduct.data);
 
-    /* create element using utils.createElementFromHTML */
+    /* create element using utils.createDOMFromHTML */
 
     thisProduct.element = utils.createDOMFromHTML(generatedHTML);
 
