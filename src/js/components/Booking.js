@@ -1,6 +1,8 @@
 import {templates, select} from '../settings.js';
 import AmountWidget from './AmountWidget.js';
 import BaseWidget from './BaseWidget.js';
+import DatePicker from './DatePicker.js';
+import HourPicker from './HourPicker.js';
 
 class Booking {
   constructor(element){
@@ -37,9 +39,9 @@ class Booking {
     thisBooking.peopleAmountWidget = new AmountWidget(thisBooking.dom.peopleAmount);
     thisBooking.hoursAmountWidget = new AmountWidget(thisBooking.dom.hoursAmount);
 
-    thisBooking.hourPickerAmountWidget = new BaseWidget(thisBooking.dom.hourPicker);
+    thisBooking.hourPickerAmountWidget = new HourPicker(thisBooking.dom.hourPicker);
     //console.log(thisBooking.hourPickerAmountWidget)
-    thisBooking.datePickerAmountWidget = new BaseWidget(thisBooking.dom.datePicker);
+    thisBooking.datePickerAmountWidget = new DatePicker(thisBooking.dom.datePicker);
     //console.log(thisBooking.datePickerAmountWidget)
 
     thisBooking.dom.peopleAmount.addEventListener('updated', function() {
