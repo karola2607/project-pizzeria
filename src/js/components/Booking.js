@@ -16,14 +16,14 @@ class Booking {
 
     thisBooking.dom = {};
     thisBooking.dom.wrapper = element;
-    console.log(element)
+    //console.log(element)
     element.innerHTML = generatedHTML;
 
 
     thisBooking.dom.peopleAmount = thisBooking.dom.wrapper.querySelector(select.booking.peopleAmount);
-    console.log(thisBooking.dom.peopleAmount)
+    //console.log(thisBooking.dom.peopleAmount)
     thisBooking.dom.hoursAmount = thisBooking.dom.wrapper.querySelector(select.booking.hoursAmount);
-    console.log(thisBooking.dom.hoursAmount)
+    //console.log(thisBooking.dom.hoursAmount)
 
 
   }

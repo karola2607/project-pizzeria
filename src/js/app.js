@@ -111,7 +111,7 @@ const app = {
 
       });
 
-    console.log('thisApp.data', JSON.stringify(thisApp.data));
+    //console.log('thisApp.data', JSON.stringify(thisApp.data));
   },
 
   init: function(){
