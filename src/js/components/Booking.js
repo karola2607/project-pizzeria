@@ -197,37 +197,41 @@ class Booking {
     });
 
 
-
+    // add eventListener for all tables - div floor-plan
     thisBooking.dom.floorPlan.addEventListener('click', function(event){
       event.preventDefault();
-
+      // check if clicked element is a table
       if (event.target.offsetParent.classList.contains('table')){
+        // when it's a table, check if not contains class 'booked' or 'selected'
 
         if ((event.target.offsetParent.classList.contains(!classNames.booking.tableBooked)) ^ (event.target.offsetParent.classList.contains(!classNames.booking.tableSelected))) {
-
+          // find data-table of clicked element
           let dataTable = event.target.offsetParent.getAttribute(settings.booking.tableIdAttribute);
           console.log(dataTable);
-
+          //add data-table of clicked element to new property in constructor
           thisBooking.selectedPlace = dataTable;
-
+          //make a loop for a table to find a tableId (data-table)
           for(let table of thisBooking.dom.tables){
             let tableId = table.getAttribute(settings.booking.tableIdAttribute);
 
-
+            // check if one of another tables wasn't already selected
             if (tableId !== dataTable && table.classList.contains(classNames.booking.tableSelected)){
+              // when yes, remove class 'selected' and add class 'selected' to clicked element
               table.classList.remove(classNames.booking.tableSelected);
               event.target.offsetParent.classList.add(classNames.booking.tableSelected);
             }
           }
         }
 
+        // when it's a table and was already clicked - remove class 'selected'
         else if (event.target.offsetParent.classList.contains(classNames.booking.tableSelected)){
           event.target.offsetParent.classList.remove(classNames.booking.tableSelected);
         }
-      }
 
-      else if (event.target.offsetParent.classList.contains(classNames.booking.tableBooked)){
-        alert('This table is not available');
+        // when it's a table and was already booked - display alert
+        else if (event.target.offsetParent.classList.contains(classNames.booking.tableBooked)){
+          alert('This table is not available');
+        }
       }
     });
 
