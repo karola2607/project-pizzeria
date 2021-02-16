@@ -197,14 +197,14 @@ class Booking {
     });
 
 
-    // add eventListener for all tables - div floor-plan
+    // add eventListener for all the tables - div '.floor-plan'
     thisBooking.dom.floorPlan.addEventListener('click', function(event){
       event.preventDefault();
       // check if clicked element is a table
       if (event.target.offsetParent.classList.contains('table')){
-        // when it's a table, check if not contains class 'booked' or 'selected'
+        // when it's a table, check if not contains class 'booked' and 'selected'
 
-        if ((event.target.offsetParent.classList.contains(!classNames.booking.tableBooked)) ^ (event.target.offsetParent.classList.contains(!classNames.booking.tableSelected))) {
+        if ((event.target.offsetParent.classList.contains(!classNames.booking.tableBooked)) && (event.target.offsetParent.classList.contains(!classNames.booking.tableSelected))) {
           // find data-table of clicked element
           let dataTable = event.target.offsetParent.getAttribute(settings.booking.tableIdAttribute);
           console.log(dataTable);
@@ -214,9 +214,9 @@ class Booking {
           for(let table of thisBooking.dom.tables){
             let tableId = table.getAttribute(settings.booking.tableIdAttribute);
 
-            // check if one of another tables wasn't already selected
+            // check if any of the tables have already been selected
             if (tableId !== dataTable && table.classList.contains(classNames.booking.tableSelected)){
-              // when yes, remove class 'selected' and add class 'selected' to clicked element
+              // when yes, remove class 'selected' from the table and add class 'selected' to clicked element
               table.classList.remove(classNames.booking.tableSelected);
               event.target.offsetParent.classList.add(classNames.booking.tableSelected);
             }
