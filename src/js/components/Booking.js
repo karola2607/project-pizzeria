@@ -8,6 +8,8 @@ class Booking {
   constructor(element){
     const thisBooking = this;
 
+    thisBooking.selectedPlace = '';
+
     thisBooking.render(element);
     thisBooking.initWidgets();
     thisBooking.getData();
@@ -162,6 +164,7 @@ class Booking {
     //console.log(element)
     element.innerHTML = generatedHTML;
 
+
     thisBooking.dom.datePicker = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
     thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
 
@@ -171,7 +174,12 @@ class Booking {
     //console.log(thisBooking.dom.hoursAmount)
 
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
+
+    thisBooking.dom.floorPlan = thisBooking.dom.wrapper.querySelector('.floor-plan');
+    console.log(thisBooking.dom.floorPlan);
   }
+
+
 
   initWidgets(){
     const thisBooking = this;
@@ -184,18 +192,49 @@ class Booking {
     thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker);
     //console.log(thisBooking.datePickerAmountWidget)
 
-    thisBooking.dom.peopleAmount.addEventListener('updated', function() {
-    });
-
-    thisBooking.dom.hoursAmount.addEventListener('updated', function() {
-    });
-
     thisBooking.dom.wrapper.addEventListener('updated', function() {
       thisBooking.updateDOM();
     });
 
 
+
+    thisBooking.dom.floorPlan.addEventListener('click', function(event){
+      event.preventDefault();
+
+      if (event.target.offsetParent.classList.contains('table')){
+
+        if ((event.target.offsetParent.classList.contains(!classNames.booking.tableBooked)) ^ (event.target.offsetParent.classList.contains(!classNames.booking.tableSelected))) {
+
+          let dataTable = event.target.offsetParent.getAttribute(settings.booking.tableIdAttribute);
+          console.log(dataTable);
+
+          thisBooking.selectedPlace = dataTable;
+
+          for(let table of thisBooking.dom.tables){
+            let tableId = table.getAttribute(settings.booking.tableIdAttribute);
+
+
+            if (tableId !== dataTable && table.classList.contains(classNames.booking.tableSelected)){
+              table.classList.remove(classNames.booking.tableSelected);
+              event.target.offsetParent.classList.add(classNames.booking.tableSelected);
+            }
+          }
+        }
+
+        else if (event.target.offsetParent.classList.contains(classNames.booking.tableSelected)){
+          event.target.offsetParent.classList.remove(classNames.booking.tableSelected);
+        }
+      }
+
+      else if (event.target.offsetParent.classList.contains(classNames.booking.tableBooked)){
+        alert('This table is not available');
+      }
+    });
+
+
   }
 }
+
+
 
 export default Booking;
