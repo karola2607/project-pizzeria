@@ -255,16 +255,6 @@
       "starters": ["lemonWater"]
     }
   ],
-  "booking": [
-  {
-      "id": 2,
-      "date": "2021-02-21",
-      "hour": "16:00",
-      "table": 3,
-      "duration": 2,
-      "ppl": 3,
-      "starters": ["bread", "lemonWater"]
-    }
-  ]
+  "booking": []
 }
 
