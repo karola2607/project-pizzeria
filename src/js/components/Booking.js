@@ -176,7 +176,6 @@ class Booking {
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
 
     thisBooking.dom.floorPlan = thisBooking.dom.wrapper.querySelector('.floor-plan');
-    console.log(thisBooking.dom.floorPlan);
   }
 
 
@@ -200,44 +199,54 @@ class Booking {
     // add eventListener for all the tables - div '.floor-plan'
     thisBooking.dom.floorPlan.addEventListener('click', function(event){
       event.preventDefault();
-      // check if clicked element is a table
-      if (event.target.offsetParent.classList.contains('table')){
-        // when it's a table, check if not contains class 'booked' and 'selected'
+      thisBooking.initTables(event);
+    });
+  }
 
-        if ((event.target.offsetParent.classList.contains(!classNames.booking.tableBooked)) && (event.target.offsetParent.classList.contains(!classNames.booking.tableSelected))) {
-          // find data-table of clicked element
-          let dataTable = event.target.offsetParent.getAttribute(settings.booking.tableIdAttribute);
-          console.log(dataTable);
-          //add data-table of clicked element to new property in constructor
-          thisBooking.selectedPlace = dataTable;
-          //make a loop for a table to find a tableId (data-table)
-          for(let table of thisBooking.dom.tables){
-            let tableId = table.getAttribute(settings.booking.tableIdAttribute);
+  initTables(event){
+    const thisBooking = this;
+    //console.log(event)
+    let clickedElement = event.toElement;
+    //console.log(clickedElement)
 
-            // check if any of the tables have already been selected
-            if (tableId !== dataTable && table.classList.contains(classNames.booking.tableSelected)){
-              // when yes, remove class 'selected' from the table and add class 'selected' to clicked element
-              table.classList.remove(classNames.booking.tableSelected);
-              event.target.offsetParent.classList.add(classNames.booking.tableSelected);
-            }
+    // check if clicked element is a table
+    if (clickedElement.classList.contains('table')){
+      // when it's a table, check if not contains class 'booked' and 'selected'
+
+      if ((!clickedElement.classList.contains(classNames.booking.tableBooked)) && (!clickedElement.classList.contains(classNames.booking.tableSelected))) {
+        // find data-table of clicked element
+        clickedElement.classList.add(classNames.booking.tableSelected);
+        let dataTable = clickedElement.getAttribute(settings.booking.tableIdAttribute);
+        //console.log(dataTable);
+        //add data-table of clicked element to new property in constructor
+        thisBooking.selectedPlace = dataTable;
+        //make a loop for a table to find a tableId (data-table)
+
+        for(let table of thisBooking.dom.tables){
+          let tableId = table.getAttribute(settings.booking.tableIdAttribute);
+
+          // check if any of the tables have already been selected
+          if (tableId !== dataTable && table.classList.contains(classNames.booking.tableSelected)){
+            // when yes, remove class 'selected' from the table and add class 'selected' to clicked element
+            table.classList.remove(classNames.booking.tableSelected);
+            clickedElement.classList.add(classNames.booking.tableSelected);
           }
         }
-
-        // when it's a table and was already clicked - remove class 'selected'
-        else if (event.target.offsetParent.classList.contains(classNames.booking.tableSelected)){
-          event.target.offsetParent.classList.remove(classNames.booking.tableSelected);
-        }
-
-        // when it's a table and was already booked - display alert
-        else if (event.target.offsetParent.classList.contains(classNames.booking.tableBooked)){
-          alert('This table is not available');
-        }
       }
-    });
 
+      // when it's a table and was already clicked - remove class 'selected'
+      else if (clickedElement.classList.contains(classNames.booking.tableSelected)){
+        clickedElement.classList.remove(classNames.booking.tableSelected);
+      }
 
+      // when it's a table and was already booked - display alert
+      else if (clickedElement.classList.contains(classNames.booking.tableBooked)){
+        alert('This table is not available');
+      }
+    }
   }
 }
+
 
 
 
