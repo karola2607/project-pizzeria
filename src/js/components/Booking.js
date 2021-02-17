@@ -149,6 +149,7 @@ class Booking {
         table.classList.add(classNames.booking.tableBooked);
       } else {
         table.classList.remove(classNames.booking.tableBooked);
+        table.classList.remove(classNames.booking.tableSelected);
       }
     }
   }
