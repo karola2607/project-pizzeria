@@ -9,6 +9,7 @@
   <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="vendor/range-slider.min.css">
+  <link rel="stylesheet" href="vendor/flickity.min.css" media="screen">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -21,6 +22,7 @@
           <h2 class="logo__subtitle">the best homemade Italian food</h2>
         </div>
         <div class="main-nav">
+          <a href ="#home">Home</a>
           <a href="#order">Order</a>
           <a href="#booking">Booking</a>
         </div>
@@ -62,6 +64,94 @@
   </header>
 
   <div id="pages">
+    <section id="home">
+      <div class="home-wrapper container">
+        <div class="home-widget">
+          <div class="image-wrapper">
+            <div class="order-online choice">
+              <img src="https://i.postimg.cc/66mH2D8F/pizza-1.jpg">
+                <div class = "text-img">
+                  <p> ORDER ONLINE</p>
+                </div>
+            </div>
+            <div class="book-table choice">
+              <img src="https://i.postimg.cc/FRQxV4yH/pizza-2.jpg">
+                <div class = "text-img">
+                  <p>BOOK A TABLE</p>
+                </div>
+            </div>
+          </div>
+          <div class="opening-hours">
+            <p> OPENING HOURS</p>
+            <p> TUE-SUN 12AM-12PM</p>
+          </div>
+        </div>
+        <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "autoPlay": 3000, "pauseAutoPlayOnHover": false }'>
+          <div class="carousel-cell">
+            <div class = "carousel-image">
+              <img src="https://i.postimg.cc/sghN5S1Y/pizza-3.jpg">
+            </div>
+            <div class= "carousel-text">
+              <h3>
+                AMAZING SERVICE!
+              </h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+              </p>
+              <p>
+                -Luiza Becker
+              </p>
+            </div>
+          </div>
+          <div class="carousel-cell">
+            <div class = "carousel-image">
+              <img src="https://i.postimg.cc/sghN5S1Y/pizza-3.jpg">
+            </div>
+            <div class= "carousel-text">
+              <h3>
+                GREAT FOOD!
+              </h3>
+              <p>
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et.
+              <p>
+                -Anna Louis
+              </p>
+            </div>
+          </div>
+          <div class="carousel-cell">
+            <div class = "carousel-image">
+              <img src="https://i.postimg.cc/sghN5S1Y/pizza-3.jpg">
+            </div>
+            <div class= "carousel-text">
+              <h3>
+                DELICIOUS PIZZA!
+              </h3>
+              <p>
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui.
+              </p>
+              <p>
+              -Laurentiu Fox
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="gallery">
+          <div class="first-row">
+            <img src="https://i.postimg.cc/yxQjc6F3/pizza-4.jpg">
+            <img src="https://i.postimg.cc/6q22bBkv/pizza-5.jpg">
+            <img src="https://i.postimg.cc/t4HZDQ2s/pizza-6.jpg">
+          </div>
+          <div class="second-row">
+            <img src="https://i.postimg.cc/wBqt85KH/pizza-7.jpg">
+            <img src="https://i.postimg.cc/FRq1L2Ys/pizza-8.jpg">
+            <img src="https://i.postimg.cc/pXjqcjMq/pizza-9.jpg">
+          </div>
+        </div>
+          <div class="link">
+            <a href=#> View more on Instagram</a>
+          </div>
+      </div>
+    </section>
     <section id="order">
       <div id="product-list" class="product-list container"></div>
     </section>
@@ -245,6 +335,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="vendor/range-slider.min.js"></script>
+  <script src="vendor/flickity.pkgd.min.js"></script>
   <script src="js/app.js" type="module"></script>
 </body>
 </html>

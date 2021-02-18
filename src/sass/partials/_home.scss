@@ -1,0 +1,151 @@
+.home-wrapper {
+  margin: ($base-size * 3.5) auto;
+  padding: ($base-size * 6) ($base-size * 4);
+  background: $color-light;
+  border-bottom: 1px solid lighten($color-dark, 70%);
+  border-radius: $radius;
+}
+
+.image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  height: 120px;
+
+}
+
+.choice {
+  position: relative;
+  & img {
+    object-fit: cover;
+    max-height: 120px;
+    width: 100%;
+    border: solid 2px $color-light;
+    border-radius: $radius;
+  }
+}
+
+.text-img {
+  position: absolute;
+  right: auto;
+  bottom: auto;
+  padding-top: 0;
+  padding-bottom: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color : $color-light;
+  width: 240px;
+  text-align: center;
+
+  & p:first-of-type{
+    font-size: 26px;
+    font-family: $font-header;
+  }
+}
+
+
+.order-online .text-img::after {
+  display: inline-block;
+  content: "Delicious food delivered to your door";
+  opacity: 0;
+  transition: all 1s;
+}
+
+.book-table .text-img::after {
+  display: inline-block;
+  content: "Be our gest";
+  opacity: 0;
+  transition: all 1s;
+}
+
+.text-img:hover:after {
+  display: block;
+  margin-bottom: 30px;
+  opacity: 1;
+  transition: all 1s;
+}
+
+
+
+
+
+
+
+.opening-hours {
+  background-color: $color-main;
+  border: solid 2px $color-light;
+  border-radius: $radius;
+  text-align: center;
+  height: 150px;
+  color: $color-light;
+
+    & p:first-of-type {
+       font-size: 28px;
+       padding-bottom: 0;
+       margin-bottom:0;
+       font-family: $font-header;
+    }
+
+    & p:last-of-type {
+      font-size: 16px;
+      padding-top: 0;
+      margin-top:0;
+    }
+}
+
+.carousel-cell {
+   display: flex;
+   padding-top: 100px;
+   width: 100%;
+
+   & .carousel-image img {
+      object-fit: cover;
+      height: 200px;
+      width: 200px;
+   }
+}
+
+.carousel-text {
+  padding: 0 0 30px 40px;
+  max-height: 200px;
+  width: 100%;
+}
+
+.gallery {
+  padding-top: 100px;
+}
+
+.gallery img {
+  object-fit: cover;
+  height: 200px;
+  width: 200px;
+  padding: 5px;
+  border: solid 2px $color-light;
+  border-radius: $radius;
+}
+
+.first-row {
+  display: flex;
+  width: 100%;
+}
+
+.second-row {
+  display: flex;
+  width: 100%;
+}
+
+.link {
+  padding: 10px 5px;
+
+  & a {
+    color: $color-main;
+  }
+}
+
+
+
+
+
+
