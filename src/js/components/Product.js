@@ -2,7 +2,7 @@ import {select, templates, classNames} from '../settings.js';
 import AmountWidget from './AmountWidget.js';
 import {utils} from '../utils.js';
 
-/* global Handlebars, dataSource */
+/* global Handlebars */
 
 class Product{
   constructor(id, data){
