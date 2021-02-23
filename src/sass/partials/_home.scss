@@ -12,7 +12,8 @@
   align-items: center;
   max-width: 100%;
   height: 120px;
-  & a {
+
+  a {
     color: white;
     text-decoration: none;
   }
@@ -21,7 +22,8 @@
 
 .choice {
   position: relative;
-  & img {
+
+  img {
     object-fit: cover;
     max-height: 120px;
     width: 100%;
@@ -44,7 +46,7 @@
   width: 240px;
   text-align: center;
 
-  & p:first-of-type{
+  p:first-of-type{
     font-size: 26px;
     font-family: $font-header;
   }
@@ -72,12 +74,6 @@
   transition: all 1s;
 }
 
-
-
-
-
-
-
 .opening-hours {
   background-color: $color-main;
   border: solid 2px $color-light;
@@ -86,30 +82,30 @@
   height: 150px;
   color: $color-light;
 
-    & p:first-of-type {
-       font-size: 28px;
-       padding-bottom: 0;
-       margin-bottom:0;
-       font-family: $font-header;
-    }
+  p:first-of-type {
+    font-size: 28px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    font-family: $font-header;
+  }
 
-    & p:last-of-type {
-      font-size: 16px;
-      padding-top: 0;
-      margin-top:0;
-    }
+  p:last-of-type {
+    font-size: 16px;
+    padding-top: 0;
+    margin-top: 0;
+  }
 }
 
 .carousel-cell {
-   display: flex;
-   padding-top: 100px;
-   width: 100%;
+  display: flex;
+  padding-top: 100px;
+  width: 100%;
 
-   & .carousel-image img {
-      object-fit: cover;
-      height: 200px;
-      width: 200px;
-   }
+  .carousel-image img {
+    object-fit: cover;
+    height: 200px;
+    width: 200px;
+  }
 }
 
 .carousel-text {
@@ -142,7 +138,7 @@
 .link {
   padding: 10px 5px;
 
-  & a {
+  a {
     color: $color-main;
   }
 }
@@ -193,7 +189,3 @@
   color: $color-main;
   transition: all 1s;
 }
-
-
-
-

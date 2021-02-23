@@ -306,7 +306,7 @@ class Booking {
     for (let item in payload){
       thisBooking.makeBooked(item.date, utils.numberToHour(item.hour), item.duration, item.table);
 
-    location.reload();
+      location.reload();
     }
   }
 }

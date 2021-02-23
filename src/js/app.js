@@ -10,6 +10,8 @@ const app = {
     const bookingContainer = document.querySelector(select.containerOf.booking),
       /* create new instance for class Booking */
       booking = new Booking(bookingContainer);
+
+    thisApp.booking = booking;
   },
 
   initPages : function(){
