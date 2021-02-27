@@ -5,13 +5,10 @@ import Booking from './components/Booking.js';
 
 const app = {
   initBooking: function(){
-    const thisApp = this;
     /* find container of booking*/
-    const bookingContainer = document.querySelector(select.containerOf.booking),
-      /* create new instance for class Booking */
-      booking = new Booking(bookingContainer);
-
-    thisApp.booking = booking;
+    const bookingContainer = document.querySelector(select.containerOf.booking);
+    /* create new instance for class Booking */
+    new Booking(bookingContainer);
   },
 
   initPages : function(){
